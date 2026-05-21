@@ -146,6 +146,13 @@ def get_match(
         raise AttributeError(error_text)
     return match
 
+<<<<<<< HEAD
+def update_mat1(item):
+    global mat1
+    y = item
+    mat1 = y
+=======
+>>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
 
 def buy_tomato(food: str) -> str:
     """Gets the radius of the given planet
@@ -168,6 +175,147 @@ def buy_tomato(food: str) -> str:
     else:
         return "You can't find the tomato in this Aisle. Go look in another one!"
         
+<<<<<<< HEAD
+def checkLoc(location):
+    global atHome
+    global atCafe
+    global atStore
+    h =atHome
+    c=atCafe
+    s=atStore
+    if location=="home":
+        return h
+    if location=="store":
+        return s
+    if location=="cafe":
+        return c
+    
+    
+def changeLoc(locatio):
+    global atHome
+    global atCafe
+    global atStore
+    h =atHome
+    t= True
+    f= False
+    c=atCafe
+    s=atStore
+    if locatio=="home":
+        if h==f:
+            atHome=t
+            print("You've came back home")
+        else:
+            print("You are already at home")
+    elif locatio=="store":
+        if s==f:
+            atStore=t
+            print("You've entered the Store, what do you want to buy?")
+        else:
+            print("You are already at the Store")
+    elif locatio=="cafe":
+        if c==f:
+            atCafe=t
+            print("You've entered the Cafe, time to work!")
+        else:
+            print("You are already at the Cafe")
+
+def go_somewhere(place):
+    if not checkLoc(place):
+        changeLoc(place)
+
+# def get_birth_date(name: str) -> str:
+#     """Gets birth date of the given person
+
+#     Args:
+#         name - name of the person
+
+#     Returns:
+#         birth date of the given person
+#     """
+#     infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
+#     pattern = r"(?:Born\D*)(?P<birth>\d{4}-\d{2}-\d{2})"
+#     error_text = (
+#         "Page infobox has no birth information (at least none in xxxx-xx-xx format)"
+#     )
+#     match = get_match(infobox_text, pattern, error_text)
+
+#     return match.group("birth")
+
+# def get_death_date(name: str) -> str:
+#     """Gets birth date of the given person
+
+#     Args:
+#         name - name of the person
+
+#     Returns:
+#         birth death of the given person
+#     """
+#     #infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
+#     infobox_text = re.sub(r"\(.*?\)", "", infobox_text)
+#     pattern = r"Died[^A-Za-z]*([A-Za-z]+\s+\d{1,2},?\s+\d{4})"
+
+#     error_text = (
+#         "Page infobox has no death information (at least none in xxxx-xx-xx format)"
+#     )
+#     match = re.search(pattern, infobox_text)
+#     if not match:
+#         return "Alive"
+#     raw_date = match.group(1)
+
+#     dt = parser.parse(raw_date)
+#     return dt.strftime("%Y-%m-%d")
+
+# def get_age(name: str) -> str:
+#     #infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
+
+#     # 1. Check for death age: (aged XX)
+#     death_age_match = re.search(r"\(aged\s+(\d+)\)", infobox_text)
+#     if death_age_match:
+#         age = death_age_match.group(1)
+#         return f"Dead at age {age}"
+
+#     # 2. Check for living age: (age XX)
+#     living_age_match = re.search(r"\(age\s+(\d+)\)", infobox_text)
+#     if living_age_match:
+#         age1 = living_age_match.group(1)
+#         return f"{age1} years old"
+#     # 3. No age found
+#     return "Unknown"
+
+# def get_aliveness(name:str) -> str:
+#     #infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
+#     death_age_match1 = re.search(r"\(aged\s+(\d+)\)", infobox_text)
+#     if death_age_match1:
+#         return f"The Person is currently Dead"
+
+#     # 2. Check for living age: (age XX)
+#     living_age_match1 = re.search(r"\(age\s+(\d+)\)", infobox_text)
+#     if living_age_match1:
+#         return f"The person is currently alive"
+#     # 3. No age found
+#     return "Unknown"
+# def get_birth_place(name: str) -> str:
+#     #infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
+
+#     pattern = r"Born.*?\d{4}[^\w]*([A-Za-z .'-]+,[A-Za-z .'-]+)"
+#     match = re.search(pattern, infobox_text)
+
+#     if match:
+#         return match.group(1).strip()
+
+#     pattern2 = r"Born[\s\S]*?\(age \d+\)\s*([A-Za-z .'-]+,[A-Za-z .'-]+)(?=Afghanistan|Albania|Algeria|Andorra|Angola|Antigua|Argentina|Armenia|Australia|Austria|Azerbaijan|Baden|Bahamas|Bahrain|Bangladesh|Barbados|Bavaria|Belarus|Belgium|Belize|Benin|Bolivia|Bosnia|Botswana|Brazil|Brunei|Brunswick|Bulgaria|Burkina|Burma|Burundi|Cabo|Cambodia|Cameroon|Canada|Cayman|Central|Chad|Chile|China|Colombia|Comoros|Congo|Cook|Costa|Cote|Croatia|Cuba|Cyprus|Czechia|Czechoslovakia|Democratic|Denmark|Djibouti|Dominica|Dominican|Duchy|East|Ecuador|Egypt|El|Equatorial|Eritrea|Estonia|Eswatini|Ethiopia|Federal|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Grand|Greece|Grenada|Guatemala|Guinea|Guyana|Haiti|Hanover|Hanseatic|Hawaii|Hesse|Holy|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kingdom|Kiribati|Korea|Kosovo|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Lew|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall|Mauritania|Mauritius|Mecklenburg-Schwerin|Mecklenburg-Strelitz|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Namibia|Nassau|Nauru|Nepal|Netherlands|New|Nicaragua|Niger|Nigeria|Niue|North|Norway|Oldenburg|Oman|Orange|Pakistan|Palau|Panama|Papal|Papua|Paraguay|Peru|Philippines|Piedmont-Sardinia|Poland|Portugal|Qatar|Republic|Romania|Russia|Rwanda|Saint|Samoa|San|Sao|Saudi|Schaumburg-Lippe|Senegal|Serbia|Seychelles|Sierra|Singapore|Slovakia|Slovenia|Solomon|Somalia|South|Spain|Sri|Sudan|Suriname|Sweden|Switzerland|Syria|Tajikistan|Tanzania|Texas|Thailand|Timor-Leste|Togo|Tonga|Trinidad|Tunisia|Turkey|Turkmenistan|Tuvalu|Two|Uganda|Ukraine|Union|United|Uruguay|Uzbekistan|Vanuatu|Venezuela|Vietnam|Württemberg|Yemen|Zambia|Zimbabwe)"
+#     pattern3 = r"Birthplace[\s\S]*?\(age \d+\)\s*([A-Za-z .'-]+,[A-Za-z .'-]+)(?=Afghanistan|Albania|Algeria|Andorra|Angola|Antigua|Argentina|Armenia|Australia|Austria|Azerbaijan|Baden|Bahamas|Bahrain|Bangladesh|Barbados|Bavaria|Belarus|Belgium|Belize|Benin|Bolivia|Bosnia|Botswana|Brazil|Brunei|Brunswick|Bulgaria|Burkina|Burma|Burundi|Cabo|Cambodia|Cameroon|Canada|Cayman|Central|Chad|Chile|China|Colombia|Comoros|Congo|Cook|Costa|Cote|Croatia|Cuba|Cyprus|Czechia|Czechoslovakia|Democratic|Denmark|Djibouti|Dominica|Dominican|Duchy|East|Ecuador|Egypt|El|Equatorial|Eritrea|Estonia|Eswatini|Ethiopia|Federal|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Grand|Greece|Grenada|Guatemala|Guinea|Guyana|Haiti|Hanover|Hanseatic|Hawaii|Hesse|Holy|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kingdom|Kiribati|Korea|Kosovo|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Lew|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall|Mauritania|Mauritius|Mecklenburg-Schwerin|Mecklenburg-Strelitz|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Namibia|Nassau|Nauru|Nepal|Netherlands|New|Nicaragua|Niger|Nigeria|Niue|North|Norway|Oldenburg|Oman|Orange|Pakistan|Palau|Panama|Papal|Papua|Paraguay|Peru|Philippines|Piedmont-Sardinia|Poland|Portugal|Qatar|Republic|Romania|Russia|Rwanda|Saint|Samoa|San|Sao|Saudi|Schaumburg-Lippe|Senegal|Serbia|Seychelles|Sierra|Singapore|Slovakia|Slovenia|Solomon|Somalia|South|Spain|Sri|Sudan|Suriname|Sweden|Switzerland|Syria|Tajikistan|Tanzania|Texas|Thailand|Timor-Leste|Togo|Tonga|Trinidad|Tunisia|Turkey|Turkmenistan|Tuvalu|Two|Uganda|Ukraine|Union|United|Uruguay|Uzbekistan|Vanuatu|Venezuela|Vietnam|Württemberg|Yemen|Zambia|Zimbabwe)"
+#     match2 = re.search(pattern2, infobox_text)
+#     match3 = re.search(pattern3, infobox_text)
+#     if match2:
+#         birthplace = match2.group(1).strip()
+#         return birthplace
+#     if match3:
+#         birthplace2 = match2.group(1).strip()
+#         return birthplace2
+
+#     return "They are still alive! Live in the moment..."
+=======
 
 
 
@@ -263,6 +411,7 @@ def get_birth_place(name: str) -> str:
         return birthplace2
 
     return "They are still alive! Live in the moment..."
+>>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
 # below are a set of actions. Each takes a list argument and returns a list of answers
 # according to the action and the argument. It is important that each function returns a
 # list of the answer(s) and not just the answer itself.
@@ -280,7 +429,12 @@ def birth_date(matches: List[str]) -> List[str]:
     return [get_birth_date(" ".join(matches))]
 
 def buy_food(matches: List[str]) -> List[str]:
+<<<<<<< HEAD
+    if mat1==tomato:
+        buy_tomato(" ".join(matches))
+=======
     
+>>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
 
 # def polar_radius(matches: List[str]) -> List[str]:
 #     """Returns polar radius of planet in matches
@@ -319,6 +473,10 @@ pa_list: List[Tuple[Pattern, Action]] = [
 ]
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
 def search_pa_list(src: List[str]) -> List[str]:
     """Takes source, finds matching pattern and calls corresponding action. If it finds
     a match but has no answers it returns ["No answers"]. If it finds no match it
@@ -336,9 +494,12 @@ def search_pa_list(src: List[str]) -> List[str]:
         print(act)
         print(pat)
         print(mat)
+<<<<<<< HEAD
+=======
         act1=act
         pat1=pat
         mat1=mat
+>>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
         if mat is not None:
             answer = act(mat)
             return answer if answer else ["No answers"]
@@ -365,4 +526,9 @@ def query_loop() -> None:
 
 
 # uncomment the next line once you've implemented everything are ready to try it out
+<<<<<<< HEAD
 #query_loop()
+=======
+#query_loop()
+>>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
+
