@@ -15,7 +15,7 @@ atCafe = False
 inKitchen = False
 
 # Store navigation
-currentAisle = -1   # 0 = not in an aisle
+currentAisle = -1   # 0 = not in an aisle # -1 = not at Store
 
 # Player stats
 money0 = 1
@@ -47,24 +47,99 @@ chocolate = 0
 sugar = 0
 salt = 0
 
-tomatoA = 0
-noodlesA = 0
-flourA =0
-milkA = 0
-eggA = 0
-meatA = 0
-vegmeatA = 0
-cheeseA = 0
-onionA = 0
-waterA = 0
-carrotA = 0
-butterA = 0
-oilA = 0
-lettuceA = 0
-cucumberA = 0
-chocolateA = 0
-sugarA = 0
-saltA = 0
+
+#ailes of ingredients
+tomatoA = random.randint(1, 3)
+noodlesA = random.randint(1, 3)
+flourA = random.randint(1, 3)
+milkA = random.randint(1, 3)
+eggA = random.randint(1, 3)
+meatA = random.randint(1, 3)
+vegmeatA = random.randint(1, 3)
+cheeseA = random.randint(1, 3)
+onionA = random.randint(1, 3)
+waterA = random.randint(1, 3)
+carrotA = random.randint(1, 3)
+butterA = random.randint(1, 3)
+oilA = random.randint(1, 3)
+lettuceA = random.randint(1, 3)
+cucumberA = random.randint(1, 3)
+chocolateA = random.randint(1, 3)
+sugarA = random.randint(1, 3)
+saltA = random.randint(1, 3)
+
+#cafe ingredients
+'Toppings: Whipped Cream, Chocolate Syrup, Carmel Syrup, Marshmallow, Plain(no additives),'
+'Base: Coffee Bean, Vanilla Bean, Tonka Bean, Chikory Root, Hot Chocolate'
+orders = [
+    # Whipped Cream
+    "I'd like a Whipped Cream Chicory",
+    "I'd like a Whipped Cream Coffee",
+    "I'd like a Whipped Cream Hot Chocolate",
+    "I'd like a Whipped Cream Tonka",
+    "I'd like a Whipped Cream Vanilla",
+
+    # Chocolate Syruped
+    "I'd like a Chocolate Syruped Chicory",
+    "I'd like a Chocolate Syruped Coffee",
+    "I'd like a Chocolate Syruped Hot Chocolate",
+    "I'd like a Chocolate Syruped Tonka",
+    "I'd like a Chocolate Syruped Vanilla",
+
+    # Caramel Syrup
+    "I'd like a Caramel Syrup Chicory",
+    "I'd like a Caramel Syrup Coffee",
+    "I'd like a Caramel Syrup Hot Chocolate",
+    "I'd like a Caramel Syrup Tonka",
+    "I'd like a Caramel Syrup Vanilla",
+
+    # Marshmallow
+    "I'd like a Marshmallow Chicory",
+    "I'd like a Marshmallow Coffee",
+    "I'd like a Marshmallow Hot Chocolate",
+    "I'd like a Marshmallow Tonka",
+    "I'd like a Marshmallow Vanilla",
+
+    # Plain
+    "I'd like a Plain Chicory",
+    "I'd like a Plain Coffee",
+    "I'd like a Plain Hot Chocolate",
+    "I'd like a Plain Tonka",
+    "I'd like a Plain Vanilla"
+]
+
+orderNames = [
+    "Whipped Cream Chicory",
+    "Whipped Cream Coffee",
+    "Whipped Cream Hot Chocolate",
+    "Whipped Cream Tonka",
+    "Whipped Cream Vanilla",
+
+    "Chocolate Syruped Chicory",
+    "Chocolate Syruped Coffee",
+    "Chocolate Syruped Hot Chocolate",
+    "Chocolate Syruped Tonka",
+    "Chocolate Syruped Vanilla",
+
+    "Caramel Syrup Chicory",
+    "Caramel Syrup Coffee",
+    "Caramel Syrup Hot Chocolate",
+    "Caramel Syrup Tonka",
+    "Caramel Syrup Vanilla",
+
+    "Marshmallow Chicory",
+    "Marshmallow Coffee",
+    "Marshmallow Hot Chocolate",
+    "Marshmallow Tonka",
+    "Marshmallow Vanilla",
+
+    "Plain Chicory",
+    "Plain Coffee",
+    "Plain Hot Chocolate",
+    "Plain Tonka",
+    "Plain Vanilla"
+]
+
 # Ingredient list (fill in later)
 # ingredients = {
 #     "ingredientName": { "aisle": ?, "price": ? },
@@ -105,7 +180,7 @@ from bs4 import BeautifulSoup
 from match import match
 from typing import List, Callable, Tuple, Any, Match
 from dateutil import parser
-
+import random
 
 
 
@@ -146,37 +221,372 @@ def get_match(
         raise AttributeError(error_text)
     return match
 
-<<<<<<< HEAD
 def update_mat1(item):
     global mat1
     y = item
     mat1 = y
-=======
->>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
 
-def buy_tomato(food: str) -> str:
-    """Gets the radius of the given planet
+# def check_mat1(item):
 
-    Args:
-        planet_name - name of the planet to get radius of
-
-    Returns:
-        radius of the given planet
-    """
+def buy_tomato():
+    global tomato
+    global money0
+    global tomatoA
+    global currentAisle
     if currentAisle== -1:
-        return "You are not in the store! Go to the store to look for your ingredient."
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle== 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
     elif currentAisle==tomatoA:
         if money0>0:
             money0 = money0-1
             tomato = tomato+1
-            return "You found the tomato! You gained a tomato, and paid 1 gold"
+            print("You found the tomato! You gained a tomato, and paid 1 gold")
         else:
-            return "You have no money! Go earn some by working in the Cafe."
+            print("You have no money! Go earn some by working in the Cafe.")
     else:
-        return "You can't find the tomato in this Aisle. Go look in another one!"
-        
-<<<<<<< HEAD
-def checkLoc(location):
+        print("You can't find the tomato in this Aisle. Go look in another one!")
+
+def buy_noodles():
+    global noodles
+    global money0
+    global noodlesA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == noodlesA:
+        if money0 > 0:
+            money0 -= 1
+            noodles += 1
+            print("You found the noodles! You gained noodles, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the noodles in this Aisle. Go look in another one!")
+
+
+def buy_flour():
+    global flour
+    global money0
+    global flourA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == flourA:
+        if money0 > 0:
+            money0 -= 1
+            flour += 1
+            print("You found the flour! You gained flour, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the flour in this Aisle. Go look in another one!")
+
+
+def buy_milk():
+    global milk
+    global money0
+    global milkA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == milkA:
+        if money0 > 0:
+            money0 -= 1
+            milk += 1
+            print("You found the milk! You gained milk, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the milk in this Aisle. Go look in another one!")
+
+
+def buy_egg():
+    global egg
+    global money0
+    global eggA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == eggA:
+        if money0 > 0:
+            money0 -= 1
+            egg += 1
+            print("You found the egg! You gained an egg, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the egg in this Aisle. Go look in another one!")
+
+
+def buy_meat():
+    global meat
+    global money0
+    global meatA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == meatA:
+        if money0 > 0:
+            money0 -= 1
+            meat += 1
+            print("You found the meat! You gained meat, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the meat in this Aisle. Go look in another one!")
+
+
+def buy_vegmeat():
+    global vegmeat
+    global money0
+    global vegmeatA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == vegmeatA:
+        if money0 > 0:
+            money0 -= 1
+            vegmeat += 1
+            print("You found the vegmeat! You gained vegmeat, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the vegmeat in this Aisle. Go look in another one!")
+
+
+def buy_cheese():
+    global cheese
+    global money0
+    global cheeseA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == cheeseA:
+        if money0 > 0:
+            money0 -= 1
+            cheese += 1
+            print("You found the cheese! You gained cheese, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the cheese in this Aisle. Go look in another one!")
+
+
+def buy_onion():
+    global onion
+    global money0
+    global onionA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == onionA:
+        if money0 > 0:
+            money0 -= 1
+            onion += 1
+            print("You found the onion! You gained an onion, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the onion in this Aisle. Go look in another one!")
+
+
+def buy_water():
+    global water
+    global money0
+    global waterA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == waterA:
+        if money0 > 0:
+            money0 -= 1
+            water += 1
+            print("You found the water! You gained water, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the water in this Aisle. Go look in another one!")
+
+
+def buy_carrot():
+    global carrot
+    global money0
+    global carrotA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == carrotA:
+        if money0 > 0:
+            money0 -= 1
+            carrot += 1
+            print("You found the carrot! You gained a carrot, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the carrot in this Aisle. Go look in another one!")
+
+
+def buy_butter():
+    global butter
+    global money0
+    global butterA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == butterA:
+        if money0 > 0:
+            money0 -= 1
+            butter += 1
+            print("You found the butter! You gained butter, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the butter in this Aisle. Go look in another one!")
+
+
+def buy_oil():
+    global oil
+    global money0
+    global oilA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == oilA:
+        if money0 > 0:
+            money0 -= 1
+            oil += 1
+            print("You found the oil! You gained oil, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the oil in this Aisle. Go look in another one!")
+
+
+def buy_lettuce():
+    global lettuce
+    global money0
+    global lettuceA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == lettuceA:
+        if money0 > 0:
+            money0 -= 1
+            lettuce += 1
+            print("You found the lettuce! You gained lettuce, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the lettuce in this Aisle. Go look in another one!")
+
+
+def buy_cucumber():
+    global cucumber
+    global money0
+    global cucumberA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == cucumberA:
+        if money0 > 0:
+            money0 -= 1
+            cucumber += 1
+            print("You found the cucumber! You gained a cucumber, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the cucumber in this Aisle. Go look in another one!")
+
+
+def buy_chocolate():
+    global chocolate
+    global money0
+    global chocolateA
+    global currentAisle    
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == chocolateA:
+        if money0 > 0:
+            money0 -= 1
+            chocolate += 1
+            print("You found the chocolate! You gained chocolate, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the chocolate in this Aisle. Go look in another one!")
+
+
+def buy_sugar():
+    global sugar
+    global money0
+    global sugarA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == sugarA:
+        if money0 > 0:
+            money0 -= 1
+            sugar += 1
+            print("You found the sugar! You gained sugar, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the sugar in this Aisle. Go look in another one!")
+
+
+def buy_salt():
+    global salt
+    global money0
+    global saltA
+    global currentAisle
+    if currentAisle == -1:
+        print("You are not in the store! Go to the store to look for your ingredient.")
+    elif currentAisle == 0:
+        print("You are not in an aisle right now. Go to an aisle first!")
+    elif currentAisle == saltA:
+        if money0 > 0:
+            money0 -= 1
+            salt += 1
+            print("You found the salt! You gained salt, and paid 1 gold")
+        else:
+            print("You have no money! Go earn some by working in the Cafe.")
+    else:
+        print("You can't find the salt in this Aisle. Go look in another one!")
+
+def checkLoc(location)-> str:
     global atHome
     global atCafe
     global atStore
@@ -190,34 +600,49 @@ def checkLoc(location):
     if location=="cafe":
         return c
     
+    return True
+    
     
 def changeLoc(locatio):
     global atHome
     global atCafe
     global atStore
+    global currentAisle
     h =atHome
     t= True
     f= False
     c=atCafe
     s=atStore
+    cA=currentAisle
     if locatio=="home":
         if h==f:
+            currentAisle= -1
+            print("You've come back home")
             atHome=t
-            print("You've came back home")
+            atStore=f
+            atCafe=f
         else:
             print("You are already at home")
     elif locatio=="store":
         if s==f:
-            atStore=t
+            currentAisle= 0
             print("You've entered the Store, what do you want to buy?")
+            atStore=t
+            atHome=f
+            atCafe=f            
         else:
             print("You are already at the Store")
     elif locatio=="cafe":
         if c==f:
-            atCafe=t
+            currentAisle= -1
             print("You've entered the Cafe, time to work!")
+            atCafe=t
+            atHome=f
+            atStore=f
         else:
             print("You are already at the Cafe")
+    else:
+        print("Not a Valid location, Please enter: 'Go to (Cafe, Home, or Store)")
 
 def go_somewhere(place):
     if not checkLoc(place):
@@ -315,126 +740,96 @@ def go_somewhere(place):
 #         return birthplace2
 
 #     return "They are still alive! Live in the moment..."
-=======
-
-
-
-def get_birth_date(name: str) -> str:
-    """Gets birth date of the given person
-
-    Args:
-        name - name of the person
-
-    Returns:
-        birth date of the given person
-    """
-    infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
-    pattern = r"(?:Born\D*)(?P<birth>\d{4}-\d{2}-\d{2})"
-    error_text = (
-        "Page infobox has no birth information (at least none in xxxx-xx-xx format)"
-    )
-    match = get_match(infobox_text, pattern, error_text)
-
-    return match.group("birth")
-
-def get_death_date(name: str) -> str:
-    """Gets birth date of the given person
-
-    Args:
-        name - name of the person
-
-    Returns:
-        birth death of the given person
-    """
-    #infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
-    infobox_text = re.sub(r"\(.*?\)", "", infobox_text)
-    pattern = r"Died[^A-Za-z]*([A-Za-z]+\s+\d{1,2},?\s+\d{4})"
-
-    error_text = (
-        "Page infobox has no death information (at least none in xxxx-xx-xx format)"
-    )
-    match = re.search(pattern, infobox_text)
-    if not match:
-        return "Alive"
-    raw_date = match.group(1)
-
-    dt = parser.parse(raw_date)
-    return dt.strftime("%Y-%m-%d")
-
-def get_age(name: str) -> str:
-    #infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
-
-    # 1. Check for death age: (aged XX)
-    death_age_match = re.search(r"\(aged\s+(\d+)\)", infobox_text)
-    if death_age_match:
-        age = death_age_match.group(1)
-        return f"Dead at age {age}"
-
-    # 2. Check for living age: (age XX)
-    living_age_match = re.search(r"\(age\s+(\d+)\)", infobox_text)
-    if living_age_match:
-        age1 = living_age_match.group(1)
-        return f"{age1} years old"
-    # 3. No age found
-    return "Unknown"
-
-def get_aliveness(name:str) -> str:
-    #infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
-    death_age_match1 = re.search(r"\(aged\s+(\d+)\)", infobox_text)
-    if death_age_match1:
-        return f"The Person is currently Dead"
-
-    # 2. Check for living age: (age XX)
-    living_age_match1 = re.search(r"\(age\s+(\d+)\)", infobox_text)
-    if living_age_match1:
-        return f"The person is currently alive"
-    # 3. No age found
-    return "Unknown"
-def get_birth_place(name: str) -> str:
-    #infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
-
-    pattern = r"Born.*?\d{4}[^\w]*([A-Za-z .'-]+,[A-Za-z .'-]+)"
-    match = re.search(pattern, infobox_text)
-
-    if match:
-        return match.group(1).strip()
-
-    pattern2 = r"Born[\s\S]*?\(age \d+\)\s*([A-Za-z .'-]+,[A-Za-z .'-]+)(?=Afghanistan|Albania|Algeria|Andorra|Angola|Antigua|Argentina|Armenia|Australia|Austria|Azerbaijan|Baden|Bahamas|Bahrain|Bangladesh|Barbados|Bavaria|Belarus|Belgium|Belize|Benin|Bolivia|Bosnia|Botswana|Brazil|Brunei|Brunswick|Bulgaria|Burkina|Burma|Burundi|Cabo|Cambodia|Cameroon|Canada|Cayman|Central|Chad|Chile|China|Colombia|Comoros|Congo|Cook|Costa|Cote|Croatia|Cuba|Cyprus|Czechia|Czechoslovakia|Democratic|Denmark|Djibouti|Dominica|Dominican|Duchy|East|Ecuador|Egypt|El|Equatorial|Eritrea|Estonia|Eswatini|Ethiopia|Federal|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Grand|Greece|Grenada|Guatemala|Guinea|Guyana|Haiti|Hanover|Hanseatic|Hawaii|Hesse|Holy|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kingdom|Kiribati|Korea|Kosovo|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Lew|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall|Mauritania|Mauritius|Mecklenburg-Schwerin|Mecklenburg-Strelitz|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Namibia|Nassau|Nauru|Nepal|Netherlands|New|Nicaragua|Niger|Nigeria|Niue|North|Norway|Oldenburg|Oman|Orange|Pakistan|Palau|Panama|Papal|Papua|Paraguay|Peru|Philippines|Piedmont-Sardinia|Poland|Portugal|Qatar|Republic|Romania|Russia|Rwanda|Saint|Samoa|San|Sao|Saudi|Schaumburg-Lippe|Senegal|Serbia|Seychelles|Sierra|Singapore|Slovakia|Slovenia|Solomon|Somalia|South|Spain|Sri|Sudan|Suriname|Sweden|Switzerland|Syria|Tajikistan|Tanzania|Texas|Thailand|Timor-Leste|Togo|Tonga|Trinidad|Tunisia|Turkey|Turkmenistan|Tuvalu|Two|Uganda|Ukraine|Union|United|Uruguay|Uzbekistan|Vanuatu|Venezuela|Vietnam|Württemberg|Yemen|Zambia|Zimbabwe)"
-    pattern3 = r"Birthplace[\s\S]*?\(age \d+\)\s*([A-Za-z .'-]+,[A-Za-z .'-]+)(?=Afghanistan|Albania|Algeria|Andorra|Angola|Antigua|Argentina|Armenia|Australia|Austria|Azerbaijan|Baden|Bahamas|Bahrain|Bangladesh|Barbados|Bavaria|Belarus|Belgium|Belize|Benin|Bolivia|Bosnia|Botswana|Brazil|Brunei|Brunswick|Bulgaria|Burkina|Burma|Burundi|Cabo|Cambodia|Cameroon|Canada|Cayman|Central|Chad|Chile|China|Colombia|Comoros|Congo|Cook|Costa|Cote|Croatia|Cuba|Cyprus|Czechia|Czechoslovakia|Democratic|Denmark|Djibouti|Dominica|Dominican|Duchy|East|Ecuador|Egypt|El|Equatorial|Eritrea|Estonia|Eswatini|Ethiopia|Federal|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Grand|Greece|Grenada|Guatemala|Guinea|Guyana|Haiti|Hanover|Hanseatic|Hawaii|Hesse|Holy|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kingdom|Kiribati|Korea|Kosovo|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Lew|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall|Mauritania|Mauritius|Mecklenburg-Schwerin|Mecklenburg-Strelitz|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Namibia|Nassau|Nauru|Nepal|Netherlands|New|Nicaragua|Niger|Nigeria|Niue|North|Norway|Oldenburg|Oman|Orange|Pakistan|Palau|Panama|Papal|Papua|Paraguay|Peru|Philippines|Piedmont-Sardinia|Poland|Portugal|Qatar|Republic|Romania|Russia|Rwanda|Saint|Samoa|San|Sao|Saudi|Schaumburg-Lippe|Senegal|Serbia|Seychelles|Sierra|Singapore|Slovakia|Slovenia|Solomon|Somalia|South|Spain|Sri|Sudan|Suriname|Sweden|Switzerland|Syria|Tajikistan|Tanzania|Texas|Thailand|Timor-Leste|Togo|Tonga|Trinidad|Tunisia|Turkey|Turkmenistan|Tuvalu|Two|Uganda|Ukraine|Union|United|Uruguay|Uzbekistan|Vanuatu|Venezuela|Vietnam|Württemberg|Yemen|Zambia|Zimbabwe)"
-    match2 = re.search(pattern2, infobox_text)
-    match3 = re.search(pattern3, infobox_text)
-    if match2:
-        birthplace = match2.group(1).strip()
-        return birthplace
-    if match3:
-        birthplace2 = match2.group(1).strip()
-        return birthplace2
-
-    return "They are still alive! Live in the moment..."
->>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
 # below are a set of actions. Each takes a list argument and returns a list of answers
 # according to the action and the argument. It is important that each function returns a
 # list of the answer(s) and not just the answer itself.
 
 
-def birth_date(matches: List[str]) -> List[str]:
-    """Returns birth date of named person in matches
+# def birth_date(matches: List[str]) -> List[str]:
+#     """Returns birth date of named person in matches
 
-    Args:
-        matches - match from pattern of person's name to find birth date of
+#     Args:
+#         matches - match from pattern of person's name to find birth date of
 
-    Returns:
-        birth date of named person
-    """
-    return [get_birth_date(" ".join(matches))]
+#     Returns:
+#         birth date of named person
+#     """
+#     return [get_birth_date(" ".join(matches))]
 
 def buy_food(matches: List[str]) -> List[str]:
-<<<<<<< HEAD
-    if mat1==tomato:
-        buy_tomato(" ".join(matches))
-=======
-    
->>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
+    if mat1=="tomato":
+        buy_tomato()
+    if mat1 == "noodles":
+        buy_noodles()
+    if mat1 == "flour":
+        buy_flour()
+    if mat1 == "milk":
+        buy_milk()
+    if mat1 == "egg":
+        buy_egg()
+    if mat1 == "meat":
+        buy_meat()
+    if mat1 == "vegmeat":
+        buy_vegmeat()
+    if mat1 == "cheese":
+        buy_cheese()
+    if mat1 == "onion":
+        buy_onion()
+    if mat1 == "water":
+        buy_water()
+    if mat1 == "carrot":
+        buy_carrot()
+    if mat1 == "butter":
+        buy_butter()
+    if mat1 == "oil":
+        buy_oil()
+    if mat1 == "lettuce":
+        buy_lettuce()
+    if mat1 == "cucumber":
+        buy_cucumber()
+    if mat1 == "chocolate":
+        buy_chocolate()
+    if mat1 == "sugar":
+        buy_sugar()
+    if mat1 == "salt":
+        buy_salt()
+
+
+# tomato = 0
+# noodles = 0
+# flour =0
+# milk = 0
+# egg = 0
+# meat = 0
+# vegmeat = 0
+# cheese = 0
+# onion = 0
+# water = 0
+# carrot = 0
+# butter = 0
+# oil = 0
+# lettuce = 0
+# cucumber = 0
+# chocolate = 0
+# sugar = 0
+# salt = 0
+def check_aisle() -> str:
+    global currentAisle
+    x=currentAisle
+    return x
+
+def change_aisle(number):
+    global atStore
+    global currentAisle
+    y=atStore
+    x=number
+    if atStore==True:
+        currentAisle=x
+    else:
+        print("You are not at the store right now!")
+
+def make_coffee():
+    global atCafe
 
 # def polar_radius(matches: List[str]) -> List[str]:
 #     """Returns polar radius of planet in matches
@@ -461,22 +856,11 @@ Action = Callable[[List[str]], List[Any]]
 # The pattern-action list for the natural language query system. It must be declared
 # here, after all of the function definitions
 pa_list: List[Tuple[Pattern, Action]] = [
-    ("when was % born".split(), birth_date),
-    ("what is the polar radius of %".split(), polar_radius),
-    ("when did % die".split(),death_date),
-    ("how old is %".split(),age),
-    ("how old was %".split(),age),
-    ("where was % born".split(),birth_place),
-    ("is % alive".split(),alive),
-    ("is % still alive".split(),alive),
+    ("buy %".split(), buy_food),
     (["bye"], bye_action),
 ]
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
 def search_pa_list(src: List[str]) -> List[str]:
     """Takes source, finds matching pattern and calls corresponding action. If it finds
     a match but has no answers it returns ["No answers"]. If it finds no match it
@@ -494,12 +878,6 @@ def search_pa_list(src: List[str]) -> List[str]:
         print(act)
         print(pat)
         print(mat)
-<<<<<<< HEAD
-=======
-        act1=act
-        pat1=pat
-        mat1=mat
->>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
         if mat is not None:
             answer = act(mat)
             return answer if answer else ["No answers"]
@@ -526,9 +904,4 @@ def query_loop() -> None:
 
 
 # uncomment the next line once you've implemented everything are ready to try it out
-<<<<<<< HEAD
 #query_loop()
-=======
-#query_loop()
->>>>>>> 6cafd70b66fa2f37b4032dd92bc1242eb391f84f
-
