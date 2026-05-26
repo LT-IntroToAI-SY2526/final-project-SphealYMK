@@ -759,39 +759,39 @@ def go_somewhere(place):
 def buy_food(matches: List[str]) -> List[str]:
     if mat1=="tomato":
         buy_tomato()
-    if mat1 == "noodles":
+    elif mat1 == "noodles":
         buy_noodles()
-    if mat1 == "flour":
+    elif mat1 == "flour":
         buy_flour()
-    if mat1 == "milk":
+    elif mat1 == "milk":
         buy_milk()
-    if mat1 == "egg":
+    elif mat1 == "egg":
         buy_egg()
-    if mat1 == "meat":
+    elif mat1 == "meat":
         buy_meat()
-    if mat1 == "vegmeat":
+    elif mat1 == "vegan meat":
         buy_vegmeat()
-    if mat1 == "cheese":
+    elif mat1 == "cheese":
         buy_cheese()
-    if mat1 == "onion":
+    elif mat1 == "onion":
         buy_onion()
-    if mat1 == "water":
+    elif mat1 == "water":
         buy_water()
-    if mat1 == "carrot":
+    elif mat1 == "carrot":
         buy_carrot()
-    if mat1 == "butter":
+    elif mat1 == "butter":
         buy_butter()
-    if mat1 == "oil":
+    elif mat1 == "oil":
         buy_oil()
-    if mat1 == "lettuce":
+    elif mat1 == "lettuce":
         buy_lettuce()
-    if mat1 == "cucumber":
+    elif mat1 == "cucumber":
         buy_cucumber()
-    if mat1 == "chocolate":
+    elif mat1 == "chocolate":
         buy_chocolate()
-    if mat1 == "sugar":
+    elif mat1 == "sugar":
         buy_sugar()
-    if mat1 == "salt":
+    elif mat1 == "salt":
         buy_salt()
 
 
