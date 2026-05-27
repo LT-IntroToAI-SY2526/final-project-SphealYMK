@@ -68,6 +68,19 @@ chocolateA = random.randint(1, 3)
 sugarA = random.randint(1, 3)
 saltA = random.randint(1, 3)
 
+cream=0
+chsyrup=0
+csyrup=0
+marshmallow=0
+CBean=0
+VBean=0
+TBean=0
+CRoot=0
+HChocolate=0
+
+
+orderss=0
+orderNum=-1
 #cafe ingredients
 'Toppings: Whipped Cream, Chocolate Syrup, Carmel Syrup, Marshmallow, Plain(no additives),'
 'Base: Coffee Bean, Vanilla Bean, Tonka Bean, Chikory Root, Hot Chocolate'
@@ -109,11 +122,11 @@ orders = [
 ]
 
 orderNames = [
-    "Whipped Cream Chicory",
-    "Whipped Cream Coffee",
-    "Whipped Cream Hot Chocolate",
-    "Whipped Cream Tonka",
-    "Whipped Cream Vanilla",
+    "Whipped Cream Chicory", #0,0
+    "Whipped Cream Coffee",  #0,1
+    "Whipped Cream Hot Chocolate", #0,2
+    "Whipped Cream Tonka", #0,3
+    "Whipped Cream Vanilla", #0,4
 
     "Chocolate Syruped Chicory",
     "Chocolate Syruped Coffee",
@@ -648,6 +661,21 @@ def go_somewhere(place):
     if not checkLoc(place):
         changeLoc(place)
 
+def take_order():
+    global atCafe
+    global orderNum
+    global orderss
+    global orders
+    if orderss==0:
+        orderss=1
+        a=random.randint(0,24)
+        oO=orders[a]
+        print(oO)
+        orderNum=a
+
+def get_cafe_ingredients(ingredient1):
+    print(ingredient1)
+
 # def get_birth_date(name: str) -> str:
 #     """Gets birth date of the given person
 
@@ -830,6 +858,233 @@ def change_aisle(number):
 
 def make_coffee():
     global atCafe
+    global orders
+    global money0
+    'Toppings: Whipped Cream, Chocolate Syrup, Carmel Syrup, Marshmallow, Plain(no additives),'
+    'Base: Coffee Bean, Vanilla Bean, Tonka Bean, Chikory Root, Hot Chocolate'
+    y=0
+    global cream
+    global chsyrup
+    global csyrup
+    global marshmallow
+    global CBean
+    global VBean
+    global TBean
+    global CRoot
+    global HChocolate
+    aC=atCafe
+    oRDERS=orders
+    coffeeOrder=random.randint(0, 24)
+    if aC==False:
+        print("Not at Cafe!")
+    elif coffeeOrder == 0:   # Whipped Cream Chicory
+        if cream > 0 and CRoot > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 1: # Whipped Cream Coffee
+        if cream > 0 and CBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 2: # Whipped Cream Hot Chocolate
+        if cream > 0 and HChocolate > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 3: # Whipped Cream Tonka
+        if cream > 0 and TBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 4: # Whipped Cream Vanilla
+        if cream > 0 and VBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+
+# Chocolate Syruped group
+    elif coffeeOrder == 5: # Chocolate Syruped Chicory
+        if csyrup > 0 and CRoot > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 6: # Chocolate Syruped Coffee
+        if csyrup > 0 and CBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 7: # Chocolate Syruped Hot Chocolate
+        if csyrup > 0 and HChocolate > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 8: # Chocolate Syruped Tonka
+        if csyrup > 0 and TBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 9: # Chocolate Syruped Vanilla
+        if csyrup > 0 and VBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+
+# Caramel Syrup group
+    elif coffeeOrder == 10: # Caramel Syrup Chicory
+        if chsyrup > 0 and CRoot > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 11: # Caramel Syrup Coffee
+        if chsyrup > 0 and CBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 12: # Caramel Syrup Hot Chocolate
+        if chsyrup > 0 and HChocolate > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 13: # Caramel Syrup Tonka
+        if chsyrup > 0 and TBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 14: # Caramel Syrup Vanilla
+        if chsyrup > 0 and VBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+
+# Marshmallow group
+    elif coffeeOrder == 15: # Marshmallow Chicory
+        if marshmallow > 0 and CRoot > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 16: # Marshmallow Coffee
+        if marshmallow > 0 and CBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 17: # Marshmallow Hot Chocolate
+        if marshmallow > 0 and HChocolate > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 18: # Marshmallow Tonka
+        if marshmallow > 0 and TBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 19: # Marshmallow Vanilla
+        if marshmallow > 0 and VBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+
+# Plain group
+    elif coffeeOrder == 20: # Plain Chicory
+        if CRoot > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 21: # Plain Coffee
+        if CBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 22: # Plain Hot Chocolate
+        if HChocolate > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 23: # Plain Tonka
+        if TBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+
+    elif coffeeOrder == 24: # Plain Vanilla
+        if VBean > 0:
+            print("Correct ingredients!")
+            y+=1
+            money0=y
+        else:
+            print("Missing ingredients!")
+        
 
 # def polar_radius(matches: List[str]) -> List[str]:
 #     """Returns polar radius of planet in matches
@@ -857,6 +1112,8 @@ Action = Callable[[List[str]], List[Any]]
 # here, after all of the function definitions
 pa_list: List[Tuple[Pattern, Action]] = [
     ("buy %".split(), buy_food),
+    ("Go to %".split(), go_somewhere),
+    ("Go to aisle %".split(), change_aisle)
     (["bye"], bye_action),
 ]
 
